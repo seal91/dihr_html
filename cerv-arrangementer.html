@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CERV – Arrangementer og møder</title>
+<style>
+:root{
+  --beige:#FBF4ED;
+  --beige-guide:#F8F0E2;
+  --navy:#0F294A;
+  --teal:#639FAB;
+  --red:#C32032;
+  --white:#FFFFFF;
+  --navy-10:rgba(15,41,74,.10);
+  --navy-20:rgba(15,41,74,.20);
+  --maxw:1180px;
+  --radius:14px;
+  --font:"Segoe UI","Nunito Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font);
+  color:var(--navy);
+  background:transparent;
+  line-height:1.55;
+  text-align:left;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+.banner{padding:40px 0;}
+img{display:block;max-width:100%;}
+a{color:var(--navy);}
+.banner-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;margin-bottom:24px;
+}
+h2{
+  font-size:1.85rem;font-weight:700;margin-bottom:0;
+  position:relative;padding-left:18px;
+}
+h2::before{
+  content:"";position:absolute;left:0;top:.18em;bottom:.18em;
+  width:6px;background:var(--teal);border-radius:3px 3px 3px 0;
+}
+h3{font-size:1.25rem;font-weight:700;margin-bottom:10px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+@media(max-width:900px){.grid3{grid-template-columns:1fr;}}
+
+.event-card{
+  background:var(--white);border:1px solid var(--navy-10);
+  border-radius:var(--radius) var(--radius) var(--radius) 0;
+  padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;
+}
+.tag{
+  align-self:flex-start;font-size:.72rem;letter-spacing:.06em;
+  text-transform:uppercase;font-weight:700;padding:5px 11px;
+  border-radius:7px 7px 7px 0;color:var(--white);
+}
+.tag.imr{background:var(--navy);}
+.tag.eu{background:var(--teal);color:var(--navy);}
+.tag.ncp{background:#2f5d68;}
+.event-date{font-size:.85rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.04em;}
+.event-card h3{font-size:1.1rem;margin:0;}
+.event-meta{font-size:.9rem;color:#27425f;margin:0;}
+.event-card p.desc{font-size:.95rem;color:#27425f;margin:4px 0 0;}
+</style>
+</head>
+<body>
+<section class="banner">
+  <div class="wrap">
+    <div class="grid3" id="events-grid"></div>
+  </div>
+</section>
+<script>
+/* ===== DATA – EDIT HERE =====
+   type: "imr" (navy) | "eu" (teal) | "ncp" (dark teal)
+   link: optional, leave "" for none */
+var EVENTS=[
+  {type:"imr",date:"24. SEP 2026",title:"Workshop: Civilsamfundets rolle i CERV-ansøgninger",meta:"København \u00b7 Institut for Menneskerettigheder",desc:"Praktisk workshop for organisationer, der overvejer at søge midler under programmet.",link:""},
+  {type:"eu",date:"08. OKT 2026",title:"Online infomøde om Daphne-indsatsområdet",meta:"Online \u00b7 Europa-Kommissionen",desc:"Introduktion til indkaldelser om bekæmpelse af kønsbaseret vold og vold mod børn.",link:""},
+  {type:"ncp",date:"21. OKT 2026",title:"Nationalt kontaktpunkt-møde",meta:"København \u00b7 NCP Danmark",desc:"Netværksmøde for danske ansøgere og potentielle projektpartnere.",link:""}
+];
+/* ===== END DATA ===== */
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+var arrowSVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>';
+
+var TAG_LABEL={imr:"IMR-arrangement",eu:"EU-arrangement",ncp:"NCP-møde"};
+document.getElementById('events-grid').innerHTML=EVENTS.map(function(e){
+  var head=e.link?'<a href="'+esc(e.link)+'" style="text-decoration:none;color:inherit"><h3>'+esc(e.title)+'</h3></a>':'<h3>'+esc(e.title)+'</h3>';
+  return '<article class="event-card">'+
+    '<span class="tag '+esc(e.type)+'">'+esc(TAG_LABEL[e.type]||e.type)+'</span>'+
+    '<span class="event-date">'+esc(e.date)+'</span>'+head+
+    '<p class="event-meta">'+esc(e.meta)+'</p>'+
+    (e.desc?'<p class="desc">'+esc(e.desc)+'</p>':'')+
+  '</article>';
+}).join('');
+
+/* link targeting: external -> new tab, in-page anchors -> same frame */
+document.querySelectorAll('a[href]').forEach(function(a){
+  var href=a.getAttribute('href');
+  if(href && /^https?:\/\//i.test(href)){a.setAttribute('target','_blank');a.setAttribute('rel','noopener');}
+  else if(href && href.charAt(0)==='#'){a.setAttribute('target','_self');}
+});
+/* postMessage auto-resize for the Drupal/parent page */
+function postHeight(){
+  var h=document.documentElement.scrollHeight;
+  if(window.parent!==window){window.parent.postMessage({type:'cerv-resize',height:h},'*');}
+}
+window.addEventListener('load',postHeight);
+window.addEventListener('resize',postHeight);
+new ResizeObserver(postHeight).observe(document.body);
+
+</script>
+</body>
+</html>

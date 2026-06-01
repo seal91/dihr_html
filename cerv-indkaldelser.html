@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CERV – Indkaldelser af forslag</title>
+<style>
+:root{
+  --beige:#FBF4ED;
+  --beige-guide:#F8F0E2;
+  --navy:#0F294A;
+  --teal:#639FAB;
+  --red:#C32032;
+  --white:#FFFFFF;
+  --navy-10:rgba(15,41,74,.10);
+  --navy-20:rgba(15,41,74,.20);
+  --maxw:1180px;
+  --radius:14px;
+  --font:"Segoe UI","Nunito Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font);
+  color:var(--navy);
+  background:transparent;
+  line-height:1.55;
+  text-align:left;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+.banner{padding:40px 0;}
+img{display:block;max-width:100%;}
+a{color:var(--navy);}
+.banner-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;margin-bottom:24px;
+}
+h2{
+  font-size:1.85rem;font-weight:700;margin-bottom:0;
+  position:relative;padding-left:18px;
+}
+h2::before{
+  content:"";position:absolute;left:0;top:.18em;bottom:.18em;
+  width:6px;background:var(--teal);border-radius:3px 3px 3px 0;
+}
+h3{font-size:1.25rem;font-weight:700;margin-bottom:10px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+@media(max-width:900px){.grid3{grid-template-columns:1fr;}}
+
+.cfp-card{
+  background:var(--white);border:1px solid var(--navy-10);
+  border-radius:var(--radius) var(--radius) var(--radius) 0;
+  padding:22px 22px 24px;display:flex;flex-direction:column;gap:8px;
+}
+.cfp-status{
+  align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;padding:5px 11px;border-radius:7px 7px 7px 0;
+}
+.cfp-status.open{background:var(--teal);color:var(--navy);}
+.cfp-status.forthcoming{background:var(--beige-guide);color:var(--navy);border:1px solid var(--navy-20);}
+.cfp-card h3{font-size:1.08rem;margin:2px 0 0;}
+.cfp-code{font-size:.85rem;font-weight:700;color:#27425f;letter-spacing:.02em;}
+.cfp-card p.desc{font-size:.95rem;color:#27425f;margin:2px 0 0;}
+.cfp-deadline{font-size:.9rem;color:var(--navy);margin-top:auto;padding-top:6px;}
+.cfp-deadline b{font-weight:700;}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;background:var(--red);color:var(--white);
+  text-decoration:none;font-weight:700;font-size:1rem;padding:13px 22px;
+  border-radius:9px 9px 9px 0;transition:transform .12s ease;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn svg{width:16px;height:16px;}
+.banner-foot{display:flex;justify-content:center;margin-top:28px;}
+.link-out{
+  display:inline-flex;align-items:center;gap:7px;color:var(--navy);font-weight:700;
+  text-decoration:none;font-size:.95rem;border-bottom:2px solid var(--teal);padding-bottom:2px;
+}
+.link-out:hover{color:var(--red);border-color:var(--red);}
+.link-out svg{width:14px;height:14px;}
+</style>
+</head>
+<body>
+<section class="banner">
+  <div class="wrap">
+    <div class="banner-head">
+    <div class="banner-head" style="justify-content:flex-start">
+      <a class="link-out" href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501,31094502&frameworkProgramme=43251589&order=DESC&pageNumber=1&pageSize=50&sortBy=startDate">Se alle på EU's portal<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+    </div>
+    <div class="grid3" id="cfp-grid"></div>
+    <div class="banner-foot">
+      <a class="btn" href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501,31094502&frameworkProgramme=43251589&order=DESC&pageNumber=1&pageSize=50&sortBy=startDate">Gå til ansøgningsportalen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+    </div>
+  </div>
+</section>
+<script>
+/* ===== DATA – EDIT HERE =====
+   status: "open" (teal) | "forthcoming" (neutral)
+   link: direct link to the specific call on the EU portal */
+var CALLS=[
+  {status:"open",code:"CERV-2026-EQUAL",title:"Fremme af ligestilling og bekæmpelse af diskrimination",desc:"Støtte til projekter mod racisme, fremmedhad og andre former for diskrimination.",deadline:"Frist: 30. apr 2026",link:"https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/programmes/cerv"},
+  {status:"open",code:"CERV-2026-DAPHNE",title:"Bekæmpelse af kønsbaseret vold og vold mod børn",desc:"Indkaldelse under Daphne-indsatsområdet om forebyggelse og beskyttelse.",deadline:"Frist: 14. maj 2026",link:"https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/programmes/cerv"},
+  {status:"forthcoming",code:"CERV-2026-CITIZENS",title:"Borgerengagement og demokratisk deltagelse",desc:"Kommende indkaldelse om borgernes deltagelse i det europæiske demokrati.",deadline:"Åbner: efterår 2026",link:"https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/programmes/cerv"}
+];
+/* ===== END DATA ===== */
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+var arrowSVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>';
+
+var label={open:"Åben for ansøgning",forthcoming:"Kommende"};
+document.getElementById('cfp-grid').innerHTML=CALLS.map(function(c){
+  return '<article class="cfp-card">'+
+    '<span class="cfp-status '+esc(c.status)+'">'+esc(label[c.status]||c.status)+'</span>'+
+    '<span class="cfp-code">'+esc(c.code)+'</span>'+
+    '<a href="'+esc(c.link)+'" style="text-decoration:none;color:inherit"><h3>'+esc(c.title)+'</h3></a>'+
+    '<p class="desc">'+esc(c.desc)+'</p>'+
+    '<p class="cfp-deadline"><b>'+esc(c.deadline)+'</b></p>'+
+  '</article>';
+}).join('');
+
+/* link targeting: external -> new tab, in-page anchors -> same frame */
+document.querySelectorAll('a[href]').forEach(function(a){
+  var href=a.getAttribute('href');
+  if(href && /^https?:\/\//i.test(href)){a.setAttribute('target','_blank');a.setAttribute('rel','noopener');}
+  else if(href && href.charAt(0)==='#'){a.setAttribute('target','_self');}
+});
+/* postMessage auto-resize for the Drupal/parent page */
+function postHeight(){
+  var h=document.documentElement.scrollHeight;
+  if(window.parent!==window){window.parent.postMessage({type:'cerv-resize',height:h},'*');}
+}
+window.addEventListener('load',postHeight);
+window.addEventListener('resize',postHeight);
+new ResizeObserver(postHeight).observe(document.body);
+
+</script>
+</body>
+</html>
