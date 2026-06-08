@@ -443,7 +443,7 @@ function nowInfo(){
 function renderHero(){
   const {now,next,live,useDay}=nowInfo();
   const dayLabel = DAYS.find(d=>d.id===useDay).label;
-  let html='<div class="lbl"><span class="live">'+(live?'<span class="dot"></span>NU · '+dayLabel:'NÆSTE OP · '+dayLabel)+'</span><span>F17</span></div>';
+  let html='<div class="lbl"><span class="live">'+(live?'<span class="dot"></span>NU · '+dayLabel:'NEXT UP · '+dayLabel)+'</span><span>F17</span></div>';
   const e=now||next;
   if(!e){ html+='<div class="body"><h2>Teltet er lukket</h2><div class="meta">Intet program lige nu.</div></div>'; $('#hero').innerHTML=html; return; }
   html+='<div class="body"><div class="when">'+(now?'I gang nu · ':'Næste · ')+e.t+'</div><h2>'+e.title+'</h2>';
