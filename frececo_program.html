@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nationalt program for menneskerettighedsuddannelse</title>
+<!-- Proxima Nova via Adobe Fonts (Typekit). Family: "proxima-nova-wide".
+     Weights used: 900 (headings) and 500 (body). This is a CDN dependency. -->
+<link rel="stylesheet" href="https://use.typekit.net/dqa0civ.css">
 <style>
 /* ============================================================
    EMBEDDED FONT: Mynerve (handwritten accent)
@@ -57,9 +60,13 @@
   --teal:        #507F89;
   --teal-soft:   #C0D8DD;
 
-  /* --- Type --- */
-  --font-display: "Proxima Nova Wide", "Arial Black", "Helvetica Neue", Arial, sans-serif;
-  --font-body:    "Proxima Nova", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  /* --- Type ---
+     Real Proxima Nova via Adobe Fonts kit (loaded in <head>).
+     Headings: "proxima-nova-wide" 900 (Wide Black).
+     Body:     "proxima-nova" 500 (Medium).
+     System stack kept as fallback if the kit fails to load. */
+  --font-display: "proxima-nova-wide", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-body:    "proxima-nova", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-accent:  "Mynerve", "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
 
   --maxw: 880px;
@@ -69,6 +76,7 @@
 
 body {
   font-family: var(--font-body);
+  font-weight: 500;
   color: var(--navy);
   background: var(--white);
   line-height: 1.6;
@@ -135,7 +143,7 @@ section { margin-bottom: 48px; }
 .bubble {
   position: relative;
   padding: 26px 28px;
-  border-radius: 22px 22px 22px 4px;
+  border-radius: 22px 22px 22px 0px;
   margin-bottom: 18px;
 }
 .bubble--purple { background: var(--purple);      color: var(--beige); }
@@ -175,7 +183,7 @@ section { margin-bottom: 48px; }
 }
 .spor-card {
   padding: 28px 26px;
-  border-radius: 22px 22px 22px 4px;
+  border-radius: 22px 22px 22px 0px;
 }
 .spor-card .eyebrow {
   font-family: var(--font-display);
@@ -199,7 +207,7 @@ section { margin-bottom: 48px; }
 .fact {
   text-align: center;
   padding: 24px 16px;
-  border-radius: 22px 4px 22px 22px;
+  border-radius: 22px 0px 22px 22px;
 }
 .fact .num {
   font-family: var(--font-display);
@@ -220,7 +228,7 @@ section { margin-bottom: 48px; }
   gap: 12px;
 }
 .activities li {
-  background: var(--rose-soft);
+  background: var(--white);
   border-radius: 16px 16px 16px 4px;
   padding: 18px 22px;
 }
@@ -289,7 +297,7 @@ section { margin-bottom: 48px; }
 .closing {
   background: var(--navy);
   color: var(--beige);
-  border-radius: 28px 28px 28px 6px;
+  border-radius: 28px 28px 28px 0px;
   padding: 38px 34px;
 }
 .closing h2 { color: var(--beige); }
@@ -378,23 +386,23 @@ section { margin-bottom: 48px; }
 
   <!-- HVAD GØR VI -->
   <section>
-    <h2>Hvad gør vi?</h2>
+    <h2>Hvad laver vi?</h2>
     <ul class="activities">
       <li>
         <strong>En digital læringsplatform</strong>
-        Danmarks første samlingssted for menneskerettighedslæring, med materialer og lærervejledninger, som kan bruges direkte i grundskolens undervisning.
+        Vi skaber Danmarks første samlingssted for menneskerettighedslæring, med materialer og lærervejledninger, som kan bruges direkte i grundskolens undervisning.
       </li>
       <li>
         <strong>En national menneskerettighedsdag</strong>
-        En tilbagevendende fejring i grundskolen, hvor skoler over hele landet markerer rettighederne med en digital "rettighedskuffert".
+        Vi arrangerer en tilbagevendende fejring i grundskolen, hvor skoler over hele landet markerer rettighederne med en digital "rettighedskuffert".
       </li>
       <li>
         <strong>Partnerskaber med unge- og kulturaktører</strong>
-        Samarbejder med festivaler, teatre og foreninger, der møder de unge i øjenhøjde og gør rettighederne levende.
+        Vi samarbejder med festivaler, teatre og foreninger, der møder de unge i øjenhøjde og gør rettighederne levende.
       </li>
       <li>
         <strong>Systemisk forankring</strong>
-        Politisk arbejde og samarbejde med kommuner og læreruddannelser, så menneskerettigheder bliver en fast del af det, der undervises i.
+        Vi laver politisk arbejde og samarbejde med kommuner og læreruddannelser, så menneskerettigheder bliver en fast del af det, der undervises i.
       </li>
     </ul>
   </section>
@@ -418,7 +426,7 @@ section { margin-bottom: 48px; }
       </div>
       <div class="pbubble" style="--ar:2.3512">
         <svg viewBox="0 0 220.38 93.73" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M96.96,93.68l-25.49-.14-9.25-.08-29.55.08-21.02-.21c-4.83-1.58-8.35-4.92-10.74-9.45l-.92-5.03v-35.01c.01-5.84,4.01-11.04,9.41-13.56,4.49-2.1,9.75-1.13,14.65-1.21l6.94-.12,131.79-.11c.11-3.3-.71-6.21-1.83-9.04l-1.59-4c-2.19-5.51-5-10.28-8.44-15.46,1.23-.8,2.14-.01,3.32.45,11.77,4.64,21.84,12.59,29.1,23.09l4.03,4.98,17.16.08c9.04.04,15.85,7.27,15.85,16.74v31.32s-.7,4.89-.7,4.89c-1.43,5.61-5.79,9.37-10.88,11.47l-12.78.36-99.06-.05Z" fill="var(--navy)"/></svg>
-        <span class="pbubble-label" style="top:20%;left:8%;width:78%;height:54%;color:var(--beige);font-size:1.0em;"><br><br>Danske Medier</span>
+        <span class="pbubble-label" style="top:20%;left:8%;width:78%;height:54%;color:var(--beige);font-size:1.0em;"><br>Danske Medier</span>
       </div>
       <div class="pbubble" style="--ar:1.9629">
         <svg viewBox="0 0 175.72 89.52" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M135.97,69.48c-2.79-.37-5.36-.53-8.16-.98l-6.67-1.07-9.01-.57-14.09-1.19-17.82-.16c-.58,0-1.72.92-1.58,1.43l1.35,5.01,1.57,5.83,1.48,5.6,1.62,6.15-1.82-1.5-3.62-3.43-8.61-7.9-6.25-5.9-8.26-7.98-18.18-.12c-.68-.43-1.67-.78-2.4-.79l-9.83-.13c-1.44-.02-3.17-.5-4.62-.91-1.2-.34-1.64-3.03-2.03-4.15l-1.55-4.38-1.6-4.73-1.16-3.44-.87-2.56-1.54-4.79-1.64-5.04-1.53-4.34-1.49-4.42-1.43-4.42-1.55-4.79-1.42-4.11-1.43-4.05L0,.14c.85-.29,1.84-.04,2.82.1l4.72.69,8.73.82c3.44.32,6.64.61,10.17.95l3.47.34c4.67.98,9.11.96,13.81,1.36l18.39,1.57,5.76.77,6.26.38,8.84.38,3.51.63,4.01.24,11.48.32,10.52.8,7.66.38,32.38.07,6.61-.52c1.91-.15,4.21-1.07,5.89-.25l.68,7.28.37,6.74,1.08,7.06,1.64,11.34,1.26,6.68,1.05,5.75,1.39,6.95,1.56,7.44,1.68,7.59c-2.05.09-3.19-.49-4.99-.81l-5.77-1.01-8.4-1.49-5.59-.97-7.97-1.33-7.03-.94Z" fill="var(--purple)"/></svg>
@@ -446,7 +454,7 @@ section { margin-bottom: 48px; }
   <!-- CLOSING -->
   <section style="margin-bottom:0;">
     <div class="closing">
-      <h2>En ny norm <span class="accent">for danske skoler</span></h2>
+      <h2>En ny norm <span class="accent">for dansk skole</span></h2>
       <p>Vi vil mere end at sætte gang i nogle aktiviteter, der løber et par år. Målet er at ændre på, hvordan menneskerettigheder tænkes og undervises i den danske skole, så rettighederne bliver en selvfølgelig del af børn og unges dannelse, trivsel og medborgerskab.</p>
     </div>
   </section>
