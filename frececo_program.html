@@ -143,7 +143,7 @@ section { margin-bottom: 48px; }
 .bubble {
   position: relative;
   padding: 26px 28px;
-  border-radius: 22px 22px 22px 0px;
+  border-radius: 22px 22px 22px 4px;
   margin-bottom: 18px;
 }
 .bubble--purple { background: var(--purple);      color: var(--beige); }
@@ -183,7 +183,7 @@ section { margin-bottom: 48px; }
 }
 .spor-card {
   padding: 28px 26px;
-  border-radius: 22px 22px 22px 0px;
+  border-radius: 22px 22px 22px 4px;
 }
 .spor-card .eyebrow {
   font-family: var(--font-display);
@@ -207,7 +207,7 @@ section { margin-bottom: 48px; }
 .fact {
   text-align: center;
   padding: 24px 16px;
-  border-radius: 22px 0px 22px 22px;
+  border-radius: 22px 4px 22px 22px;
 }
 .fact .num {
   font-family: var(--font-display);
@@ -240,6 +240,16 @@ section { margin-bottom: 48px; }
   display: block;
   margin-bottom: 4px;
   color: var(--purple);
+}
+/* lighter list for short phrase items (no strong heading) */
+.activities--simple {
+  gap: 8px;
+}
+.activities--simple li {
+  background: none;
+  border: 2px solid var(--purple-soft);
+  border-radius: 12px 12px 12px 4px;
+  padding: 12px 18px;
 }
 
 /* ---------- Partners (speech bubbles) ---------- */
@@ -297,11 +307,95 @@ section { margin-bottom: 48px; }
 .closing {
   background: var(--navy);
   color: var(--beige);
-  border-radius: 28px 28px 28px 0px;
+  border-radius: 28px 28px 28px 6px;
   padding: 38px 34px;
 }
 .closing h2 { color: var(--beige); }
 .closing .accent { color: var(--rose-soft); }
+
+/* ---------- Newsletter signup form (Campaign Monitor) ----------
+   Scoped restyle of the embedded form so it matches the sub-brand.
+   Field name/id attributes are left untouched so submissions still
+   route to the Campaign Monitor list. */
+.signup {
+  margin-top: 22px;
+}
+.signup .field {
+  margin-bottom: 14px;
+}
+.signup label {
+  display: block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  color: var(--beige);
+}
+.signup input[type="text"],
+.signup input[type="email"],
+.signup input:not([type]) {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px 12px 12px 0px;
+  background: var(--white);
+  color: var(--navy);
+}
+.signup input::placeholder { color: #8a93a0; }
+.signup input:focus {
+  outline: 3px solid var(--rose-soft);
+  outline-offset: 1px;
+}
+/* consent row */
+.signup .consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 16px 0 20px;
+}
+.signup .consent input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--rose);
+  cursor: pointer;
+}
+.signup .consent label {
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 0;
+  color: var(--beige);
+}
+.signup button[type="submit"] {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+  color: var(--navy);
+  background: var(--rose-soft);
+  border: none;
+  border-radius: 999px 999px 999px 0px;
+  padding: 13px 32px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.signup button[type="submit"]:hover { background: var(--white); }
+.signup .field--inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 520px) {
+  .signup .field--inline { grid-template-columns: 1fr; gap: 0; }
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 640px) {
@@ -328,105 +422,60 @@ section { margin-bottom: 48px; }
   <!-- INTRO -->
   <div class="intro">
     <span class="intro-accent">Kend dine rettigheder!</span>
-    <p class="lead">Mange børn og unge i Danmark ved ikke nok om deres rettigheder. Det går ud over deres trivsel, deres modstandskraft og deres lyst til at deltage i demokratiet. Med det nationale program for menneskerettighedsuddannelse har Institut for Menneskerettigheder samlet skoler, kommuner, civilsamfund og kulturlivet om at lave det om. Sammen gør vi rettighederne til noget, børn og unge kan forstå og bruge i deres egen hverdag.</p>
+    <h2 style="margin-bottom:18px;">Styrk børn og unges viden om menneskerettigheder</h2>
+    <p class="lead">Institut for Menneskerettigheder lancerer et nationalt program for menneskerettighedsuddannelse. Målet er at styrke børn og unges kendskab til menneskerettighederne og deres opbakning til dem.</p>
+    <p>Programmet arbejder for, at grundskoleelever i Danmark får et bedre kendskab til de grundlæggende menneskerettigheder. Og for, at menneskerettighederne bliver forankret institutionelt og en fast del af grundskoleundervisningen.</p>
   </div>
 
-  <!-- HVAD ER PROGRAMMET -->
+  <!-- DERFOR ER INDSATSEN NØDVENDIG -->
   <section>
-    <h2>Hvad er programmet?</h2>
-    <p>Nationalt program for menneskerettighedsuddannelse er en flerårig indsats, der skal styrke børn og unges viden om menneskerettighederne og deres opbakning til dem. Vi vil give dem konkrete redskaber til at forstå og bruge deres rettigheder. Og vi vil sikre, at menneskerettigheder bliver en naturlig del af skolens hverdag, undervisning og dannelse.</p>
-    <p>Programmet bygger videre på Institut for Menneskerettigheders mangeårige arbejde med menneskerettighedsuddannelse. Det løber i første omgang over tre år.</p>
-  </section>
-
-  <!-- VISION: TO SPOR -->
-  <section>
-    <h2>Visionen: to spor</h2>
-    <div class="spor">
-      <div class="spor-card spor-1">
-        <span class="eyebrow">Spor 1</span>
-        <h3>Børn og unge kender deres rettigheder</h3>
-        <p>Alle børn og unge i Danmark skal kende det grundlæggende om menneskerettighederne og opleve dem som noget, der betyder noget i deres egen hverdag.</p>
-      </div>
-      <div class="spor-card spor-2">
-        <span class="eyebrow">Spor 2</span>
-        <h3>Rettighederne forankres i uddannelsen</h3>
-        <p>Menneskerettighederne skal stå stærkere i de institutioner, der former dansk uddannelse, både som ideal og som et redskab, man rent faktisk bruger.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HVORFOR -->
-  <section>
-    <h2>Hvorfor er det vigtigt?</h2>
+    <h2>Derfor er indsatsen nødvendig</h2>
+    <p>Alt for mange børn og unge i Danmark mangler viden om deres rettigheder.</p>
     <div class="bubble bubble--purplesoft">
-      <p>Når børn og unge ikke kender deres rettigheder, bliver det sværere for dem at gennemskue, hvornår noget er uretfærdigt. Og det svækker den opbakning til menneskerettighederne, som et demokratisk samfund hviler på.</p>
-    </div>
-    <p>Institut for Menneskerettigheders undersøgelser viser, at børn, der kender deres rettigheder godt, i højere grad tager afstand fra overgreb og siger fra, når de oplever, at deres egne eller andres rettigheder bliver trådt under fode. Viden giver dem altså noget at stå på, og det er en forudsætning for, at de kan deltage i demokratiet.</p>
-  </section>
-
-  <!-- DET VIRKER (facts) -->
-  <section>
-    <h2>Det virker</h2>
-    <p>Erfaringerne fra programmets partnerskaber taler for sig selv. Blandt de elever, der har været med til skoleworkshops om menneskerettigheder, svarer:</p>
-    <div class="facts">
-      <div class="fact fact--1">
-        <span class="num">82%</span>
-        <span class="lbl">kan nævne én eller flere menneskerettigheder</span>
-      </div>
-      <div class="fact fact--2">
-        <span class="num">68%</span>
-        <span class="lbl">ved mere om globale menneskerettighedsudfordringer</span>
-      </div>
-      <div class="fact fact--3">
-        <span class="num">64%</span>
-        <span class="lbl">har reflekteret over egne holdninger til rettigheder</span>
-      </div>
+      <p>En national børnekendskabsundersøgelse fra Institut for Menneskerettigheder og Unicef Danmark viser, at 57 procent af børn og unge i 6.–9. klasse ikke kan nævne én eneste rettighed. Ved den seneste lignende undersøgelse i 2023 var tallet 37 procent. Næsten hvert andet barn kender enten ikke sine rettigheder særlig godt eller slet ikke.</p>
     </div>
   </section>
 
-  <!-- HVAD GØR VI -->
+  <!-- VIDEN GIVER MOD -->
   <section>
-    <h2>Hvad laver vi?</h2>
+    <h2>Viden giver mod</h2>
+    <p>Når børn og unge mangler viden om menneskerettigheder, svækker det deres modstandskraft og deres forudsætninger for at deltage i demokratiet. Det mindsker opbakningen til menneskerettighederne som samfundsværdi, og det øger risikoen for, at de accepterer for eksempel diskrimination og grænseoverskridende adfærd.</p>
+    <p>Undersøgelsen viser også det modsatte. Børn, der kender deres rettigheder godt, tager i højere grad afstand fra overgreb og siger fra, når de oplever, at deres egne eller andres rettigheder bliver trådt under fode.</p>
+  </section>
+
+  <!-- DET INDEHOLDER PROGRAMMET -->
+  <section>
+    <h2>Det indeholder programmet</h2>
+    <p>Med støtte fra Frececo Fonden sætter programmet gang i en række nationale initiativer:</p>
     <ul class="activities">
       <li>
-        <strong>En digital læringsplatform</strong>
-        Vi skaber Danmarks første samlingssted for menneskerettighedslæring, med materialer og lærervejledninger, som kan bruges direkte i grundskolens undervisning.
+        <strong>Digital undervisningsplatform</strong>
+        En ny platform med praksisnære undervisningsforløb til udskolingen.
       </li>
       <li>
-        <strong>En national menneskerettighedsdag</strong>
-        Vi arrangerer en tilbagevendende fejring i grundskolen, hvor skoler over hele landet markerer rettighederne med en digital "rettighedskuffert".
+        <strong>National fejring af menneskerettighedsdagen</strong>
+        FN's menneskerettighedsdag den 10. december markeres på skoler i hele landet.
       </li>
       <li>
-        <strong>Partnerskaber med unge- og kulturaktører</strong>
-        Vi samarbejder med festivaler, teatre og foreninger, der møder de unge i øjenhøjde og gør rettighederne levende.
-      </li>
-      <li>
-        <strong>Systemisk forankring</strong>
-        Vi laver politisk arbejde og samarbejde med kommuner og læreruddannelser, så menneskerettigheder bliver en fast del af det, der undervises i.
+        <strong>Årligt topmøde</strong>
+        Et nationalt møde for aktører i uddannelsessektoren om menneskerettighedsuddannelse.
       </li>
     </ul>
+    <p style="margin-top:18px;">Programmet udvikles i partnerskab med organisationer, der gør menneskerettigheder levende og relevante for eleverne: Levende Menneskerettigheder, Rapolitics, The Why og talerskolen Røst.</p>
   </section>
 
   <!-- PARTNERE -->
   <section>
     <h2>Hvem er med?</h2>
-    <p>Programmet bygger på partnerskaber, hvor aktører med hver deres styrker arbejder sammen mod det samme mål. Blandt partnerne er:</p>
+    <p>Programmet bygger på partnerskaber med organisationer og kulturaktører, der hver især når børn og unge på deres egne måder. Blandt partnerne er:</p>
     <div class="partners">
       <div class="pbubble" style="--ar:0.9968">
         <svg viewBox="0 0 133.18 133.61" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M67.58,108.59l-13.03-.09c-1.54-.01-3.23.92-4.58,1.7l-39.46,22.88-.86.52c-.18.11-.76-.39-.63-.56l.59-.77,6.22-7.9,10.08-12.72,1.14-1.18c.32-.33-.07-1.65-.49-1.93-6.92.49-14.08.45-21.01-.45C2.03,106.49.1,103.32.01,99.38L.09,24.07l.04-6.38c.03-3.86-.55-7.92.54-11.51C1.81,2.42,5.53.03,9.47.03l115.35-.03c5.17,1.52,7,3.48,8.36,8.8v90.96c-.01,1.72-1.16,3.97-1.88,5.12-1.76,2.8-4.49,3.6-7.53,3.68l-5.53.15-3.57.08-28.88.02-8.04-.08-5.87-.08-4.31-.06Z" fill="var(--purple)"/></svg>
-        <span class="pbubble-label" style="top:8%;left:6%;width:88%;height:55%;color:var(--beige);font-size:1.15em;">FORSTÅ</span>
+        <span class="pbubble-label" style="top:8%;left:6%;width:88%;height:70%;color:var(--beige);font-size:1.15em;">FORSTÅ</span>
       </div>
       <div class="pbubble" style="--ar:2.3512">
         <svg viewBox="0 0 220.38 93.73" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M96.96,93.68l-25.49-.14-9.25-.08-29.55.08-21.02-.21c-4.83-1.58-8.35-4.92-10.74-9.45l-.92-5.03v-35.01c.01-5.84,4.01-11.04,9.41-13.56,4.49-2.1,9.75-1.13,14.65-1.21l6.94-.12,131.79-.11c.11-3.3-.71-6.21-1.83-9.04l-1.59-4c-2.19-5.51-5-10.28-8.44-15.46,1.23-.8,2.14-.01,3.32.45,11.77,4.64,21.84,12.59,29.1,23.09l4.03,4.98,17.16.08c9.04.04,15.85,7.27,15.85,16.74v31.32s-.7,4.89-.7,4.89c-1.43,5.61-5.79,9.37-10.88,11.47l-12.78.36-99.06-.05Z" fill="var(--teal)"/></svg>
-        <span class="pbubble-label" style="top:20%;left:6%;width:90%;height:75%;color:var(--beige);font-size:0.82em;"><br>Levende Menneskerettigheder</span>
-      </div>
-      <div class="pbubble" style="--ar:4.6401">
-        <svg viewBox="0 0 336.22 72.46" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M0,37.13v-10.65s2.34-5.3,2.34-5.3c2.76-6.94,9.05-12.3,15.99-14.54l4.54-1.46,6.12-.55,4.8-.74c8.63-1.33,17.22-.62,25.99-.91l9.79-.33,8.98-.67,25.75-.48,15.98-.45,15.8-.53L156.65.02,266.47,0c3.5,0,6.49,1.21,10.04.8l6.48.37,7.5.34,12.18,1.33,10.35,1.82,5.7,1.47c6.23,1.6,14.74,6.23,16.73,12.16,1.14,3.41.76,7.01.46,10.53-.9,10.85-9.95,19.96-20,23.15l-4.99,1.58-5.06,1.24-9.36,1.31c-2.49.35-3.5.76-5.3,2.45-5.27,4.94-11.92,8.45-18.81,10.6l-5.74,1.78c-3,.93-5.91,2.32-9.1.97l8.42-3.56c4.05-1.71,9.33-8.34,9.11-12.96l-5.18.42-25.69.1-2.81.48-31.97.22-92.3.49-19.96.4-7.11-.03-32.61-.12-4.25-.42-30.68-.22c-1.61-.01-3.56-.87-4.97-1.43l-4.4-1.74c-4.08-1.61-8.65-6.5-10.6-10.99L0,37.13Z" fill="var(--rose)"/></svg>
-        <span class="pbubble-label" style="top:8%;left:6%;width:82%;height:62%;color:var(--beige);font-size:1.0em;">Grundlovsfesten</span>
-      </div>
-      <div class="pbubble" style="--ar:2.3512">
-        <svg viewBox="0 0 220.38 93.73" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M96.96,93.68l-25.49-.14-9.25-.08-29.55.08-21.02-.21c-4.83-1.58-8.35-4.92-10.74-9.45l-.92-5.03v-35.01c.01-5.84,4.01-11.04,9.41-13.56,4.49-2.1,9.75-1.13,14.65-1.21l6.94-.12,131.79-.11c.11-3.3-.71-6.21-1.83-9.04l-1.59-4c-2.19-5.51-5-10.28-8.44-15.46,1.23-.8,2.14-.01,3.32.45,11.77,4.64,21.84,12.59,29.1,23.09l4.03,4.98,17.16.08c9.04.04,15.85,7.27,15.85,16.74v31.32s-.7,4.89-.7,4.89c-1.43,5.61-5.79,9.37-10.88,11.47l-12.78.36-99.06-.05Z" fill="var(--navy)"/></svg>
-        <span class="pbubble-label" style="top:20%;left:8%;width:78%;height:65%;color:var(--beige);font-size:1.1em;"><br>Danske<br>Medier</span>
+        <span class="pbubble-label" style="top:25%;left:8%;width:85%;height:65%;color:var(--beige);font-size:0.82em;">Levende<br>Menneskerettigheder</span>
       </div>
       <div class="pbubble" style="--ar:1.9629">
         <svg viewBox="0 0 175.72 89.52" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M135.97,69.48c-2.79-.37-5.36-.53-8.16-.98l-6.67-1.07-9.01-.57-14.09-1.19-17.82-.16c-.58,0-1.72.92-1.58,1.43l1.35,5.01,1.57,5.83,1.48,5.6,1.62,6.15-1.82-1.5-3.62-3.43-8.61-7.9-6.25-5.9-8.26-7.98-18.18-.12c-.68-.43-1.67-.78-2.4-.79l-9.83-.13c-1.44-.02-3.17-.5-4.62-.91-1.2-.34-1.64-3.03-2.03-4.15l-1.55-4.38-1.6-4.73-1.16-3.44-.87-2.56-1.54-4.79-1.64-5.04-1.53-4.34-1.49-4.42-1.43-4.42-1.55-4.79-1.42-4.11-1.43-4.05L0,.14c.85-.29,1.84-.04,2.82.1l4.72.69,8.73.82c3.44.32,6.64.61,10.17.95l3.47.34c4.67.98,9.11.96,13.81,1.36l18.39,1.57,5.76.77,6.26.38,8.84.38,3.51.63,4.01.24,11.48.32,10.52.8,7.66.38,32.38.07,6.61-.52c1.91-.15,4.21-1.07,5.89-.25l.68,7.28.37,6.74,1.08,7.06,1.64,11.34,1.26,6.68,1.05,5.75,1.39,6.95,1.56,7.44,1.68,7.59c-2.05.09-3.19-.49-4.99-.81l-5.77-1.01-8.4-1.49-5.59-.97-7.97-1.33-7.03-.94Z" fill="var(--purple)"/></svg>
@@ -451,33 +500,97 @@ section { margin-bottom: 48px; }
     </div>
   </section>
 
-  <!-- CLOSING -->
+  <!-- SÅDAN KAN SKOLER VÆRE MED -->
+  <section>
+    <h2>Sådan kan skoler være med</h2>
+    <p>Under programmet <strong>10.12 FOR MENNESKERETTIGHEDER</strong> inviteres alle landets skoler til at gøre FN's menneskerettighedsdag til en festdag. I ugerne op til den 10. december kan skoler bruge:</p>
+
+    <h3 style="margin-top:28px;">Ny undervisningsplatform</h3>
+    <p style="margin-bottom:6px;"><span class="accent" style="color:var(--rose);">lanceres efterår 2026</span></p>
+    <p>På Forstå.dk får skoler adgang til et nyt undervisningsforløb for udskolingen. Her kan eleverne:</p>
+    <ul class="activities activities--simple">
+      <li>arbejde med menneskerettigheder i dansk, samfundsfag og historie</li>
+      <li>udforske aktuelle dilemmaer</li>
+      <li>skrive deres egen menneskerettighedstale.</li>
+    </ul>
+    <p style="margin-top:14px;">Forløbet kan bruges i undervisningen op til menneskerettighedsdagen og giver konkrete idéer til at gøre dagen til en festdag på skolen.</p>
+
+    <h3 style="margin-top:28px;">Aktiviteter på skolen</h3>
+    <p>Som en tilføjelse til undervisningsforløbet kan skoler allerede nu forudbestille gratis aktivitetstilbud hos flere af programmets partnere:</p>
+    <ul class="activities">
+      <li>
+        <strong>Rapworkshops</strong>
+        Om menneskerettigheder med rappere fra Rapolitics.
+      </li>
+      <li>
+        <strong>Dilemmaspil</strong>
+        Om menneskerettigheder med advokater fra Levende Menneskerettigheder.
+      </li>
+      <li>
+        <strong>Dokumentarfilm</strong>
+        Visning af film om menneskerettigheder med undervisere fra The Why.
+      </li>
+    </ul>
+  </section>
+
+  <!-- BLIV OPDATERET (closing CTA) -->
   <section style="margin-bottom:0;">
     <div class="closing">
-      <h2>En ny norm <span class="accent">for dansk skole</span></h2>
-      <p>Vi vil mere end at sætte gang i nogle aktiviteter, der løber et par år. Målet er at ændre på, hvordan menneskerettigheder tænkes og undervises i den danske skole, så rettighederne bliver en selvfølgelig del af børn og unges dannelse, trivsel og medborgerskab.</p>
+      <h2>Bliv opdateret <span class="accent">hold dig i loopet</span></h2>
+      <p>Tilmeld jer nyhedsbrevet og få besked om programmet, undervisningsmaterialer og lanceringen af platformen.</p>
+
+      <!-- Campaign Monitor signup form.
+           Functional attributes (action, data-id, field name/id values,
+           method) are kept exactly as Campaign Monitor generated them;
+           only the layout and styling are changed. The <script> at the
+           end adds Campaign Monitor's inline validation and loads from
+           their CDN. The form still submits without it (browser-native
+           validation), so it can be removed if a CDN dependency is a
+           concern. -->
+      <form class="js-cm-form signup" id="subForm"
+            action="https://www.createsend.com/t/subscribeerror?description="
+            method="post"
+            data-id="5B5E7037DA78A748374AD499497E309E53082AFDE790FB1D2F2051F147BD0C17EE88D6722971DF45D50D58AD3AB6427A70A3D01EAA44B4C20B9665F94137F0FD">
+        <div class="field--inline">
+          <div class="field">
+            <label for="fieldName">Navn</label>
+            <input id="fieldName" maxlength="200" name="cm-name" placeholder="Navn" required="">
+          </div>
+          <div class="field">
+            <label for="fieldEmail">E-mail</label>
+            <input autocomplete="Email" class="js-cm-email-input qa-input-email" id="fieldEmail" maxlength="200" name="cm-niyutkh-niyutkh" placeholder="E-mail" required="" type="email">
+          </div>
+        </div>
+        <div class="field">
+          <label for="fielddkttuihi">Organisation</label>
+          <input id="fielddkttuihi" maxlength="200" name="cm-f-dkttuihi" placeholder="Organisation">
+        </div>
+        <div class="consent">
+          <input aria-required="true" id="cm-privacy-consent" name="cm-privacy-consent" required="" type="checkbox">
+          <label for="cm-privacy-consent">Jeg giver samtykke til at modtage emails med opdateringer om programmet.</label>
+        </div>
+        <input id="cm-privacy-consent-hidden" name="cm-privacy-consent-hidden" type="hidden" value="true">
+        <button type="submit">Tilmeld</button>
+      </form>
     </div>
   </section>
 
 </div>
 
+<!-- Campaign Monitor form validation (loads from their CDN; optional —
+     the form submits without it using browser-native validation). -->
+<script type="text/javascript" src="https://js.createsend1.com/javascript/copypastesubscribeformlogic.js"></script>
+
 <script>
 /* ============================================================
    EDITABLE DATA (optional)
-   The page above is static HTML for easy editing. These arrays
-   mirror the facts and partners if you later want to render them
+   The page above is static HTML for easy editing. This array
+   mirrors the partner list if you later want to render it
    dynamically or reuse the data elsewhere.
    ============================================================ */
-const FACTS = [
-  { num: "82%", label: "kan nævne én eller flere menneskerettigheder" },
-  { num: "68%", label: "ved mere om globale menneskerettighedsudfordringer" },
-  { num: "64%", label: "har reflekteret over egne holdninger til rettigheder" }
-];
-
 const PARTNERS = [
-  "FORSTÅ", "Levende Menneskerettigheder", "Grundlovsfesten",
-  "Danske Medier", "Roskilde Festival", "Rapolitics",
-  "CPH:DOX", "Røst", "Det Kongelige Teater"
+  "FORSTÅ", "Levende Menneskerettigheder", "Roskilde Festival",
+  "Rapolitics", "CPH:DOX", "Røst", "Det Kongelige Teater"
 ];
 
 /* ============================================================
